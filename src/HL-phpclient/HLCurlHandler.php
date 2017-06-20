@@ -38,7 +38,7 @@ class HLCurlHandler
         $postFields = $this->buildOneDimensionArray($postFields);
         
         if (!is_null($file)) {
-            $postFields['file'] = curl_file_create($file, 'text/csv', 'file');
+            $postFields['file'] = new \CURLFile(realpath($file), 'text/csv', 'file');
             array_push($headers, 'Content-type: multipart/form-data');
         }
         
